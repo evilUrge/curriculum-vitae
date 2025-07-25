@@ -1,0 +1,31 @@
+{
+  "name": "cv-pdf-generator",
+  "version": "1.0.0",
+  "description": "Generate high-quality PDF from HTML CV using Puppeteer",
+  "main": "scripts/generate-pdf.js",
+  "scripts": {
+    "generate-pdf": "node scripts/generate-pdf.js",
+    "test-pdf": "node scripts/test-pdf.js",
+    "dev": "npm run test-pdf && open output/Gilad-Maoz-CV.pdf",
+    "validate": "node scripts/validate-pdf.js"
+  },
+  "keywords": [
+    "pdf",
+    "cv",
+    "puppeteer",
+    "html-to-pdf",
+    "github-actions"
+  ],
+  "author": "Gilad Maoz",
+  "license": "MIT",
+  "dependencies": {
+    "puppeteer": "^23.10.4"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evilUrge/curriculum-vitae.git"
+  }
+}

@@ -1,0 +1,167 @@
+name: Generate CV PDF
+
+on:
+  # Trigger on release creation
+  release:
+    types: [created]
+
+  # Allow manual trigger for testing
+  workflow_dispatch:
+    inputs:
+      upload_to_release:
+        description: 'Upload PDF to latest release'
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  generate-pdf:
+    name: Generate High-Quality PDF
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          echo "🔧 Installing dependencies..."
+          npm ci --only=production
+          echo "✅ Dependencies installed successfully"
+
+      - name: Verify source files
+        run: |
+          echo "🔍 Verifying source files..."
+          if [ ! -f "cv.html" ]; then
+            echo "❌ cv.html not found!"
+            exit 1
+          fi
+          echo "✅ cv.html found"
+
+          if [ ! -f "scripts/generate-pdf.js" ]; then
+            echo "❌ generate-pdf.js not found!"
+            exit 1
+          fi
+          echo "✅ PDF generation script found"
+
+          # Show environment info
+          echo "🏗️  Node.js version: $(node --version)"
+          echo "📦 NPM version: $(npm --version)"
+          echo "💻 Platform: $(uname -a)"
+
+      - name: Generate PDF
+        run: |
+          echo "🚀 Starting PDF generation..."
+          node scripts/generate-pdf.js
+          echo "✅ PDF generation completed"
+        env:
+          NODE_ENV: production
+          CI: true
+
+      - name: Validate generated PDF
+        run: |
+          echo "🔍 Validating generated PDF..."
+          node scripts/validate-pdf.js
+
+          # Additional file system checks
+          if [ ! -f "output/Gilad-Maoz-CV.pdf" ]; then
+            echo "❌ PDF file not generated!"
+            exit 1
+          fi
+
+          # Check file size and show details
+          FILE_SIZE=$(stat -c%s "output/Gilad-Maoz-CV.pdf" 2>/dev/null || stat -f%z "output/Gilad-Maoz-CV.pdf")
+          FILE_SIZE_KB=$((FILE_SIZE / 1024))
+          echo "📏 PDF size: ${FILE_SIZE_KB} KB"
+
+          # List output directory
+          echo "📁 Output directory contents:"
+          ls -la output/
+
+          echo "✅ PDF validation completed successfully"
+
+      - name: Upload PDF as workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cv-pdf-${{ github.sha }}
+          path: output/Gilad-Maoz-CV.pdf
+          retention-days: 90
+          compression-level: 0  # PDFs are already compressed
+        if: always()
+
+      - name: Upload PDF to release (on release creation)
+        if: github.event_name == 'release'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "📦 Uploading PDF to release: ${{ github.event.release.tag_name }}"
+
+          # Use GitHub CLI to upload the asset
+          gh release upload ${{ github.event.release.tag_name }} \
+            output/Gilad-Maoz-CV.pdf \
+            --clobber
+
+          echo "✅ PDF uploaded to release successfully"
+
+      - name: Upload PDF to latest release (manual trigger)
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.upload_to_release == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "📦 Uploading PDF to latest release..."
+
+          # Get the latest release
+          LATEST_RELEASE=$(gh release list --limit 1 --json tagName --jq '.[0].tagName')
+
+          if [ -z "$LATEST_RELEASE" ]; then
+            echo "❌ No releases found"
+            exit 1
+          fi
+
+          echo "🏷️  Latest release: $LATEST_RELEASE"
+
+          # Upload to latest release
+          gh release upload "$LATEST_RELEASE" \
+            output/Gilad-Maoz-CV.pdf \
+            --clobber
+
+          echo "✅ PDF uploaded to latest release successfully"
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "## 📋 PDF Generation Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ -f "output/Gilad-Maoz-CV.pdf" ]; then
+            FILE_SIZE=$(stat -c%s "output/Gilad-Maoz-CV.pdf" 2>/dev/null || stat -f%z "output/Gilad-Maoz-CV.pdf")
+            FILE_SIZE_KB=$((FILE_SIZE / 1024))
+
+            echo "✅ **PDF Generated Successfully**" >> $GITHUB_STEP_SUMMARY
+            echo "- 📁 **File**: \`output/Gilad-Maoz-CV.pdf\`" >> $GITHUB_STEP_SUMMARY
+            echo "- 📏 **Size**: ${FILE_SIZE_KB} KB" >> $GITHUB_STEP_SUMMARY
+            echo "- 🏷️  **Commit**: \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+
+            if [ "${{ github.event_name }}" = "release" ]; then
+              echo "- 📦 **Release**: ${{ github.event.release.tag_name }}" >> $GITHUB_STEP_SUMMARY
+            fi
+
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "The PDF has been uploaded as a workflow artifact and will be retained for 90 days." >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ **PDF Generation Failed**" >> $GITHUB_STEP_SUMMARY
+            echo "Please check the workflow logs for details." >> $GITHUB_STEP_SUMMARY
+          fi

@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gilad Maoz - CV</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.4;
+            color: #333;
+            background: white;
+            font-size: 11px;
+        }
+        
+        @media print {
+            body { -webkit-print-color-adjust: exact; }
+            .page-break { page-break-before: always; }
+        }
+        
+        .container {
+            max-width: 21cm;
+            margin: 0 auto;
+            background: white;
+            padding: 0;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #0f0f23, #1a1a2e, #16213e);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(147, 51, 234, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .header h1 {
+            font-family: 'Courier New', monospace;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255,255,255,0.3);
+            position: relative;
+        }
+        
+        .header h1::before {
+            content: "< ";
+            color: #00ff88;
+            font-weight: normal;
+        }
+        
+        .header h1::after {
+            content: " />";
+            color: #00ff88;
+            font-weight: normal;
+        }
+        
+        .header .title {
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 14px;
+            margin-bottom: 15px;
+            opacity: 0.9;
+            color: #00ff88;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        
+        .header .contact {
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 12px;
+            opacity: 0.95;
+            color: #a0a9c0;
+        }
+        
+        .social-links {
+            margin-top: 10px;
+        }
+        
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 8px;
+            opacity: 0.9;
+        }
+        
+        .main-content {
+            display: flex;
+            min-height: calc(100vh - 200px);
+        }
+        
+        .left-column {
+            width: 35%;
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            padding: 25px;
+            position: relative;
+            border-right: 3px solid #00ff88;
+        }
+        
+        .left-column::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px),
+                linear-gradient(180deg, rgba(0,255,136,0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+        }
+        
+        .right-column {
+            width: 65%;
+            padding: 25px 30px;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .section h2 {
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 16px;
+            font-weight: 600;
+            color: #0f0f23;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #00ff88;
+            padding-bottom: 5px;
+            position: relative;
+        }
+        
+        .section h2::before {
+            content: "// ";
+            color: #00ff88;
+            font-weight: normal;
+        }
+        
+        .summary {
+            background: #f1f5f9;
+            padding: 20px;
+            border-left: 4px solid #00ff88;
+            margin-bottom: 0;
+            font-style: italic;
+            line-height: 1.6;
+        }
+        
+        .job {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .job:last-child {
+            border-bottom: none;
+        }
+        
+        .job-header {
+            margin-bottom: 8px;
+        }
+        
+        .company {
+            font-weight: 600;
+            color: #1e293b;
+            font-size: 13px;
+        }
+        
+        .position {
+            color: #6B46C1;
+            font-weight: 500;
+            font-size: 12px;
+        }
+        
+        .duration {
+            color: #64748b;
+            font-size: 11px;
+            float: right;
+        }
+        
+        .job-description {
+            margin-top: 8px;
+            line-height: 1.5;
+        }
+        
+        .job ul {
+            margin-top: 8px;
+            padding-left: 15px;
+        }
+        
+        .job li {
+            margin-bottom: 4px;
+            font-size: 10px;
+            line-height: 1.4;
+        }
+        
+        .skills-category {
+            margin-bottom: 18px;
+        }
+        
+        .skills-category h3 {
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 12px;
+            font-weight: 600;
+            color: #0f0f23;
+            margin-bottom: 8px;
+            border-bottom: 1px solid #00ff88;
+            padding-bottom: 3px;
+            position: relative;
+        }
+        
+        .skills-category h3::before {
+            content: "{ ";
+            color: #00ff88;
+            font-weight: normal;
+        }
+        
+        .skills-category h3::after {
+            content: " }";
+            color: #00ff88;
+            font-weight: normal;
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+        
+        .skill-tag {
+            background: #6B46C1;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 9px;
+            font-weight: 500;
+        }
+        
+        .ai-skill {
+            background: linear-gradient(45deg, #00ff88, #00cc6a);
+            color: #000;
+            font-weight: 600;
+            text-shadow: none;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); }
+            70% { box-shadow: 0 0 0 5px rgba(0, 255, 136, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
+        }
+        
+        @media print {
+            .ai-skill { animation: none; }
+        }
+        
+        .cloud-skill {
+            background: #059669;
+        }
+        
+        .devops-skill {
+            background: #D97706;
+        }
+        
+        .education-item, .course-item {
+            margin-bottom: 12px;
+            font-size: 10px;
+            line-height: 1.4;
+        }
+        
+        .education-item strong, .course-item strong {
+            color: #1e293b;
+        }
+        
+        .languages {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .language {
+            background: #6B46C1;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 10px;
+            font-weight: 500;
+        }
+        
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Gilad Maoz</h1>
+            <div class="title">Technical Product Manager | AI/LLM + DevOps → Product Strategy</div>
+            <div class="contact">+31-64-0367212 | gilad@maoz.dev | Amsterdam, NL</div>
+            <div class="social-links">
+                <a href="https://github.com/evilUrge">GitHub</a> |
+                <a href="https://www.linkedin.com/in/gilad-maoz/">LinkedIn</a> |
+                <a href="https://www.evilurge.com/">Portfolio</a> |
+                <a href="https://maoz.dev/">Dev Blog</a>
+            </div>
+        </div>
+
+        <div class="summary">
+            DevOps Engineer transitioning into Product Management, currently working with AI/LLM products at nxty.ai. After 15+ years as "the tech guy behind the screen," I'm ready to work more directly with people and help bridge technology with business value.
+        </div>
+
+        <div class="main-content">
+            <div class="left-column">
+                <div class="section">
+                    <h2>Skills</h2>
+                    
+                    <div class="skills-category">
+                        <h3>AI/ML & LLM</h3>
+                        <div class="skills-list">
+                            <span class="skill-tag ai-skill">LangChain</span>
+                            <span class="skill-tag ai-skill">LangGraph</span>
+                            <span class="skill-tag ai-skill">Langfuse</span>
+                            <span class="skill-tag ai-skill">OpenAI API</span>
+                            <span class="skill-tag ai-skill">Anthropic Claude</span>
+                            <span class="skill-tag ai-skill">LLM Integration</span>
+                            <span class="skill-tag ai-skill">Prompt Engineering</span>
+                            <span class="skill-tag ai-skill">AI Agents</span>
+                            <span class="skill-tag ai-skill">NLP</span>
+                            <span class="skill-tag ai-skill">Text Classification</span>
+                            <span class="skill-tag ai-skill">Model Evaluation</span>
+                            <span class="skill-tag ai-skill">MLOps</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-category">
+                        <h3>Backend & Languages</h3>
+                        <div class="skills-list">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">TypeScript</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Django</span>
+                            <span class="skill-tag">Flask</span>
+                            <span class="skill-tag">FastAPI</span>
+                            <span class="skill-tag">GraphQL</span>
+                            <span class="skill-tag">REST APIs</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-category">
+                        <h3>Cloud & Infrastructure</h3>
+                        <div class="skills-list">
+                            <span class="skill-tag cloud-skill">AWS Lambda</span>
+                            <span class="skill-tag cloud-skill">DynamoDB</span>
+                            <span class="skill-tag cloud-skill">S3</span>
+                            <span class="skill-tag cloud-skill">CloudWatch</span>
+                            <span class="skill-tag cloud-skill">Step Functions</span>
+                            <span class="skill-tag cloud-skill">AWS CDK</span>
+                            <span class="skill-tag cloud-skill">GCP Functions</span>
+                            <span class="skill-tag cloud-skill">Firebase</span>
+                            <span class="skill-tag cloud-skill">Cloudflare Workers</span>
+                            <span class="skill-tag cloud-skill">Docker</span>
+                            <span class="skill-tag cloud-skill">Kubernetes</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-category">
+                        <h3>DevOps & CI/CD</h3>
+                        <div class="skills-list">
+                            <span class="skill-tag devops-skill">GitHub Actions</span>
+                            <span class="skill-tag devops-skill">AWS CodePipeline</span>
+                            <span class="skill-tag devops-skill">CircleCI</span>
+                            <span class="skill-tag devops-skill">Codefresh</span>
+                            <span class="skill-tag devops-skill">Jenkins</span>
+                            <span class="skill-tag devops-skill">Terraform</span>
+                            <span class="skill-tag devops-skill">Infrastructure as Code</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-category">
+                        <h3>Databases & Testing</h3>
+                        <div class="skills-list">
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">Elasticsearch</span>
+                            <span class="skill-tag">Pytest</span>
+                            <span class="skill-tag">Selenium</span>
+                            <span class="skill-tag">Playwright</span>
+                            <span class="skill-tag">JMeter</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Education</h2>
+                    <div class="education-item">
+                        <strong>Advanced Python</strong><br>
+                        John Bryce, 2015
+                    </div>
+                    <div class="education-item">
+                        <strong>Pre-academic Computer Science</strong><br>
+                        Hebrew University of Jerusalem, 2013
+                    </div>
+                    <div class="education-item">
+                        <strong>High School Diploma</strong><br>
+                        Makif-Het High School, 2003-2006<br>
+                        Major: Computer Science (5 units)
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Certifications</h2>
+                    <div class="course-item">AWS Certified Solutions Architect Associate</div>
+                    <div class="course-item">Node.js & Angular 2.0 (Udemy)</div>
+                    <div class="course-item">Docker & DevOps (Linux Academy)</div>
+                    <div class="course-item">Interactive Programming in Python (Coursera)</div>
+                </div>
+
+                <div class="section">
+                    <h2>Languages</h2>
+                    <div class="languages">
+                        <span class="language">English</span>
+                        <span class="language">Hebrew</span>
+                        <span class="language">Dutch</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-column">
+                <div class="section">
+                    <h2>Experience</h2>
+
+                    <div class="job">
+                        <div class="job-header clearfix">
+                            <div class="company">Freelance: Nyx.ai</div>
+                            <div class="duration">March 2025–Present</div>
+                            <div class="position">AI Product Development</div>
+                        </div>
+                        <div class="job-description">
+                            Consulting on AI product strategy and LLM implementation for early-stage startup. Contributing technical product management expertise to AI-powered product development.
+                            <ul>
+                                <li>LLM integration architecture and implementation strategy</li>
+                                <li>Technical product roadmap development for AI/ML features</li>
+                                <li>DevOps and MLOps pipeline design for AI product deployment</li>
+                                <li>Cross-functional collaboration between engineering and product teams</li>
+                                <li>AI product performance monitoring and optimization frameworks</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-header clearfix">
+                            <div class="company">Verimatrix</div>
+                            <div class="duration">June 2021–Feb 2024</div>
+                            <div class="position">Senior DevOps Engineer</div>
+                        </div>
+                        <div class="job-description">
+                            Built and maintained cloud tools as part of the Cloud Tools & Automation team.
+                            <ul>
+                                <li>Developed an internal data aggregator for business intelligence insights</li>
+                                <li>Spearheaded the migration to AWS CDK for streamlined deployments</li>
+                                <li>Managed artifact repositories with JFrog Artifactory</li>
+                                <li>Supported teams with CI pipelines in GitHub Actions and Codefresh</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-header clearfix">
+                            <div class="company">Freelance: Yadati</div>
+                            <div class="duration">June 2020–Dec 2024</div>
+                            <div class="position">Cloud & Software Architect</div>
+                        </div>
+                        <div class="job-description">
+                            Functioned as the company's software architect. Moved entire operation from Azure to Google's fully managed Firebase.
+                            <ul>
+                                <li>Designed and deployed Cloudflare Worker reverse proxy for serverless services</li>
+                                <li>Oversaw development team, managing pull requests and tasks</li>
+                                <li>Built GitHub Action pipelines with full git flow for streamlined deployments</li>
+                                <li>Migrated VM "single-stack" from Azure to GCP, led data extraction and reorganization</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-header clearfix">
+                            <div class="company">Finqle</div>
+                            <div class="duration">October 2019–June 2020</div>
+                            <div class="position">Backend Developer</div>
+                        </div>
+                        <div class="job-description">
+                            <ul>
+                                <li>Worked on Django-based billing, accounting and factoring platform</li>
+                                <li>Utilized GraphQL for new external API</li>
+                                <li>Migrated legacy Python codebase from version 2.7 to 3.6</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-header clearfix">
+                            <div class="company">vidaXL</div>
+                            <div class="duration">February 2018–October 2019</div>
+                            <div class="position">Backend Developer & DevOps</div>
+                        </div>
+                        <div class="job-description">
+                            <ul>
+                                <li>Implemented microservices using Firebase Functions, Cloudflare Workers, and Node.js</li>
+                                <li>Automated CI/CD pipelines with OpenAPI spec validation and testing</li>
+                                <li>Dockerized services and managed Portainer for company's Swarm setup</li>
+                                <li>Migrated on-prem services to Google Cloud Platform</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-header clearfix">
+                            <div class="company">Freelance: TimeToKnow</div>
+                            <div class="duration">Aug 2016–Feb 2018</div>
+                            <div class="position">Backend Dev & DevOps</div>
+                        </div>
+                        <div class="job-description">
+                            <ul>
+                                <li>Developed Django-based back-office for client content management</li>
+                                <li>Built ETL pipelines and scheduled tasks with Celery and Crontab</li>
+                                <li>Designed and implemented cloud architecture on AWS and GCP</li>
+                                <li>Led migration from AWS to GCP, including EC2, RDS, Route 53, ELB configuration</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-header clearfix">
+                            <div class="company">Tapingo</div>
+                            <div class="duration">August 2015–August 2016</div>
+                            <div class="position">Automation Engineer & DevOps</div>
+                        </div>
+                        <div class="job-description">
+                            <ul>
+                                <li>Established test environment from scratch, started new automation infrastructure</li>
+                                <li>Created automation suites using WebDriver, Python, and pytest</li>
+                                <li>Developed load and stress testing tools</li>
+                                <li>Maintained Docker images and stacks for local development environments</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-header clearfix">
+                            <div class="company">ironSource installCore</div>
+                            <div class="duration">June 2014–August 2015</div>
+                            <div class="position">QA & Automation</div>
+                        </div>
+                        <div class="job-description">
+                            <ul>
+                                <li>Built end-to-end automation tests with Python and Selenium</li>
+                                <li>Conducted research on Chromium behaviors as part of Google Task Force</li>
+                                <li>Created test environments for various client-side web technologies</li>
+                                <li>Wrote STD documentation for macOS installers</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
