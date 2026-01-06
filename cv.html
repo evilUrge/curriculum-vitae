@@ -16,12 +16,40 @@
             line-height: 1.4;
             color: #333;
             background: white;
-            font-size: 11px;
+            font-size: 12px;
         }
         
         @media print {
-            body { -webkit-print-color-adjust: exact; }
-            .page-break { page-break-before: always; }
+            body { 
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            /* Fix header gradient rendering in PDF */
+            .header::before {
+                opacity: 0.3;
+            }
+            
+            /* Prevent left column sections from breaking across pages */
+            .left-column .section {
+                page-break-inside: avoid;
+                -webkit-column-break-inside: avoid;
+                break-inside: avoid;
+            }
+            
+            /* Extend left column background to bottom of page 2 */
+            .left-column .section:last-child {
+                padding-bottom: 600px;
+            }
+            
+            /* Add proper spacing at top of page 2 */
+            .right-column {
+                padding-top: 25px;
+            }
+            
+            .page-break { 
+                page-break-before: always; 
+            }
         }
         
         .container {
@@ -164,7 +192,6 @@
             padding: 20px;
             border-left: 4px solid #00ff88;
             margin-bottom: 0;
-            font-style: italic;
             line-height: 1.6;
         }
         
@@ -212,7 +239,7 @@
         
         .job li {
             margin-bottom: 4px;
-            font-size: 10px;
+            font-size: 11px;
             line-height: 1.4;
         }
         
@@ -263,17 +290,6 @@
             color: #000;
             font-weight: 600;
             text-shadow: none;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); }
-            70% { box-shadow: 0 0 0 5px rgba(0, 255, 136, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
-        }
-        
-        @media print {
-            .ai-skill { animation: none; }
         }
         
         .cloud-skill {
@@ -286,7 +302,7 @@
         
         .education-item, .course-item {
             margin-bottom: 12px;
-            font-size: 10px;
+            font-size: 11px;
             line-height: 1.4;
         }
         
@@ -320,7 +336,7 @@
     <div class="container">
         <div class="header">
             <h1>Gilad Maoz</h1>
-            <div class="title">Technical Product Manager | AI/LLM + DevOps → Product Strategy</div>
+            <div class="title">VP R&D / Engineering Manager | AI Product Development + Cloud Infrastructure</div>
             <div class="contact">+36-20-498-9035 | gilad@maoz.dev | Budapest, HU</div>
             <div class="social-links">
                 <a href="https://github.com/evilUrge">GitHub</a> |
@@ -331,7 +347,7 @@
         </div>
 
         <div class="summary">
-            DevOps Engineer transitioning into Product Management, currently working with AI/LLM products at nxty.ai. After 15+ years as "the tech guy behind the screen," I'm ready to work more directly with people and help bridge technology with business value.
+            Engineering Manager with 15+ years leading development teams and architecting AI/LLM product solutions. Proven track record building scalable cloud infrastructure, managing cross-functional engineering teams, and delivering production-grade AI products. Combines deep technical expertise in DevOps, cloud architecture, and AI systems with strategic leadership to drive measurable business outcomes and cost optimization.
         </div>
 
         <div class="main-content">
@@ -345,8 +361,8 @@
                             <span class="skill-tag ai-skill">LangChain</span>
                             <span class="skill-tag ai-skill">LangGraph</span>
                             <span class="skill-tag ai-skill">Langfuse</span>
-                            <span class="skill-tag ai-skill">OpenAI API</span>
-                            <span class="skill-tag ai-skill">Anthropic Claude</span>
+                            <span class="skill-tag ai-skill">Workers AI</span>
+                            <span class="skill-tag ai-skill">OpenRouter</span>
                             <span class="skill-tag ai-skill">LLM Integration</span>
                             <span class="skill-tag ai-skill">Prompt Engineering</span>
                             <span class="skill-tag ai-skill">AI Agents</span>
@@ -376,16 +392,15 @@
                         <h3>Cloud & Infrastructure</h3>
                         <div class="skills-list">
                             <span class="skill-tag cloud-skill">AWS Lambda</span>
-                            <span class="skill-tag cloud-skill">DynamoDB</span>
-                            <span class="skill-tag cloud-skill">S3</span>
                             <span class="skill-tag cloud-skill">CloudWatch</span>
-                            <span class="skill-tag cloud-skill">Step Functions</span>
                             <span class="skill-tag cloud-skill">AWS CDK</span>
                             <span class="skill-tag cloud-skill">GCP Functions</span>
                             <span class="skill-tag cloud-skill">Firebase</span>
                             <span class="skill-tag cloud-skill">Cloudflare Workers</span>
+                            <span class="skill-tag cloud-skill">Vectorize</span>
+                            <span class="skill-tag cloud-skill">Edge Computing</span>
+                            <span class="skill-tag cloud-skill">Serverless Architecture</span>
                             <span class="skill-tag cloud-skill">Docker</span>
-                            <span class="skill-tag cloud-skill">Kubernetes</span>
                         </div>
                     </div>
 
@@ -458,18 +473,18 @@
 
                     <div class="job">
                         <div class="job-header clearfix">
-                            <div class="company">Freelance: Nyx.ai</div>
-                            <div class="duration">March 2025–Present</div>
-                            <div class="position">AI Product Development</div>
+                            <div class="company">Nyx.ai (Freelance Consulting)</div>
+                            <div class="duration">March 2025–January 2026</div>
+                            <div class="position">VP R&D / Engineering Manager – AI Product Development</div>
                         </div>
                         <div class="job-description">
-                            Consulting on AI product strategy and LLM implementation for early-stage startup. Contributing technical product management expertise to AI-powered product development.
+                            Led engineering operations and AI product development for early-stage AI startup, managing team of 6 developers through agile development cycles and production deployments.
                             <ul>
-                                <li>LLM integration architecture and implementation strategy</li>
-                                <li>Technical product roadmap development for AI/ML features</li>
-                                <li>DevOps and MLOps pipeline design for AI product deployment</li>
-                                <li>Cross-functional collaboration between engineering and product teams</li>
-                                <li>AI product performance monitoring and optimization frameworks</li>
+                                <li>Architected production LLM infrastructure on Cloudflare platform (AI Gateway, Workers AI, Vectorize) using LangGraph for multi-model orchestration and LangFuse for observability</li>
+                                <li>Drove substantial cost reduction by migrating from Vercel+Supabase+OpenAI to Cloudflare Workers ecosystem and implementing multi-LLM routing with intelligent caching strategies</li>
+                                <li>Deployed RAG (Retrieval-Augmented Generation) system with Cloudflare AutoRAG and integrated real-time audio capabilities including Whisper for speech-to-text transcription</li>
+                                <li>Established DevOps practices with automated CI/CD pipelines via GitHub Actions, managing code reviews, sprint planning, and cross-functional alignment with product and business teams</li>
+                                <li>Led technical architecture decisions and resource allocation, translating AI capabilities into product roadmap features and business outcomes</li>
                             </ul>
                         </div>
                     </div>
@@ -493,7 +508,7 @@
 
                     <div class="job">
                         <div class="job-header clearfix">
-                            <div class="company">Freelance: Yadati</div>
+                            <div class="company">Yadati (Freelance Consulting)</div>
                             <div class="duration">June 2020–February 2021</div>
                             <div class="position">Cloud & Software Architect</div>
                         </div>
@@ -541,7 +556,7 @@
 
                     <div class="job">
                         <div class="job-header clearfix">
-                            <div class="company">Freelance: TimeToKnow</div>
+                            <div class="company">TimeToKnow (Freelance Consulting)</div>
                             <div class="duration">August 2016–February 2018</div>
                             <div class="position">Backend Dev & DevOps</div>
                         </div>
