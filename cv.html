@@ -30,6 +30,17 @@
                 opacity: 0.3;
             }
             
+            /* Remove ALL visual effects from skill tags in print */
+            .skill-tag, .ai-skill, .cloud-skill, .devops-skill {
+                border: 0 !important;
+                box-shadow: none !important;
+                outline: 0 !important;
+                text-shadow: none !important;
+                -webkit-box-shadow: none !important;
+                -webkit-border: 0 !important;
+                -webkit-outline: 0 !important;
+            }
+            
             /* Prevent left column sections from breaking across pages */
             .left-column .section {
                 page-break-inside: avoid;
@@ -244,17 +255,20 @@
             border-radius: 12px;
             font-size: 9px;
             font-weight: 500;
-            border: none;
-            box-shadow: none;
+            border: none !important;
+            box-shadow: none !important;
+            outline: none !important;
+            text-shadow: none !important;
         }
         
         .ai-skill {
-            background: #C6613F;
-            color: white;
+            background: #C6613F !important;
+            color: white !important;
             font-weight: 600;
-            border: none;
-            box-shadow: none;
-            outline: none;
+            border: none !important;
+            box-shadow: none !important;
+            outline: none !important;
+            text-shadow: none !important;
         }
         
         .cloud-skill {
