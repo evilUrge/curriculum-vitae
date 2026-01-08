@@ -25,35 +25,29 @@
                 print-color-adjust: exact !important;
             }
             
-            /* Fix header gradient rendering in PDF */
             .header::before {
                 opacity: 0.3;
             }
             
-            /* Remove ALL visual effects from skill tags in print */
-            .skill-tag, .ai-skill, .cloud-skill, .devops-skill {
-                border: 0 !important;
+            /* CRITICAL: Explicitly zero out ALL border/outline properties for skill tags in print */
+            span[class*="skill"] {
+                border: 0 solid transparent !important;
+                outline: 0 solid transparent !important;
                 box-shadow: none !important;
-                outline: 0 !important;
-                text-shadow: none !important;
                 -webkit-box-shadow: none !important;
-                -webkit-border: 0 !important;
-                -webkit-outline: 0 !important;
+                text-shadow: none !important;
             }
             
-            /* Prevent left column sections from breaking across pages */
             .left-column .section {
                 page-break-inside: avoid;
                 -webkit-column-break-inside: avoid;
                 break-inside: avoid;
             }
             
-            /* Extend left column background to bottom of page 2 */
             .left-column .section:last-child {
                 padding-bottom: 600px;
             }
             
-            /* Add proper spacing at top of page 2 */
             .right-column {
                 padding-top: 25px;
             }
@@ -248,26 +242,29 @@
             gap: 4px;
         }
         
+        /* CRITICAL FIX: Use transparent border instead of none */
         .skill-tag {
+            display: inline-block;
             background: #D97757;
             color: white;
             padding: 3px 8px;
             border-radius: 12px;
             font-size: 9px;
             font-weight: 500;
-            border: none !important;
+            border: 0 solid transparent !important;
+            outline: 0 solid transparent !important;
             box-shadow: none !important;
-            outline: none !important;
             text-shadow: none !important;
+            isolation: isolate;
         }
         
         .ai-skill {
             background: #C6613F !important;
             color: white !important;
             font-weight: 600;
-            border: none !important;
+            border: 0 solid transparent !important;
+            outline: 0 solid transparent !important;
             box-shadow: none !important;
-            outline: none !important;
             text-shadow: none !important;
         }
         
