@@ -95,7 +95,8 @@ async function generatePDF() {
         /* Optimize AI skill tags for PDF */
         .ai-skill {
           animation: none !important;
-          box-shadow: 0 0 0 2px rgba(0, 255, 136, 0.5) !important;
+          box-shadow: 0 0 0 1px #D97757 !important;
+          color: #D97757 !important;
         }
 
         /* Ensure print colors are preserved */
@@ -144,7 +145,7 @@ async function generatePDF() {
           break-after: avoid !important;
           break-inside: avoid !important;
         }
-      `
+      `,
     });
 
     console.log('✅ PDF optimization styles injected');
