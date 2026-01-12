@@ -5,326 +5,341 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gilad Maoz - CV</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Merriweather:wght@300;400;700&display=swap');
+
+        :root {
+            /* Palette based on maoz.dev (Claude.ai aesthetic) */
+            --bg-color: #FAF9F5;       /* Warm Cream */
+            --surface-color: #F0EEE6;  /* Cards/Secondary Backgrounds */
+            --text-primary: #141413;   /* Soft Black */
+            --text-secondary: #5D5D5A; /* Subtitles, Meta text */
+            --accent-terra-cotta: #D97757; /* Primary Actions/Highlights */
+            --accent-sage: #BCD1CA;    /* Decorative */
+            --border-color: #E0DED7;   /* Subtle borders */
+
+            --font-heading: 'Merriweather', 'Georgia', serif;
+            --font-body: 'Inter', system-ui, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.4;
-            color: #333;
-            background: white;
+            font-family: var(--font-body);
+            line-height: 1.5;
+            color: var(--text-primary);
+            background: var(--bg-color);
             font-size: 12px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-        
+
         @media print {
-            body { 
+            body {
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
             }
-            
-            /* Fix header gradient rendering in PDF */
-            .header::before {
-                opacity: 0.3;
-            }
-            
+
             /* Prevent left column sections from breaking across pages */
             .left-column .section {
                 page-break-inside: avoid;
                 -webkit-column-break-inside: avoid;
                 break-inside: avoid;
             }
-            
-            /* Extend left column background to bottom of page 2 */
-            .left-column .section:last-child {
-                padding-bottom: 600px;
+
+            /* Extend left column background to bottom of page */
+            .left-column {
+                min-height: 100vh;
             }
-            
-            /* Add proper spacing at top of page 2 */
-            .right-column {
-                padding-top: 25px;
-            }
-            
-            .page-break { 
-                page-break-before: always; 
+
+            .page-break {
+                page-break-before: always;
             }
         }
-        
+
         .container {
             max-width: 21cm;
             margin: 0 auto;
-            background: white;
+            background: var(--bg-color);
             padding: 0;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
         }
-        
+
+        /* HEADER - Navbar Style */
         .header {
-            background: linear-gradient(135deg, #0f0f23, #1a1a2e, #16213e);
-            color: white;
-            padding: 30px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+            background: var(--surface-color); /* Subtle background difference */
+            padding: 24px 40px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
-        
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(147, 51, 234, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
-            pointer-events: none;
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
         }
-        
+
         .header h1 {
-            font-family: 'Courier New', monospace;
-            font-size: 36px;
+            font-family: var(--font-heading);
+            font-size: 28px;
             font-weight: 700;
-            margin-bottom: 8px;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(255,255,255,0.3);
-            position: relative;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+            line-height: 1;
         }
-        
-        .header h1::before {
-            content: "< ";
-            color: #00ff88;
-            font-weight: normal;
+
+        .header-nav {
+            display: flex;
+            gap: 20px;
         }
-        
-        .header h1::after {
-            content: " />";
-            color: #00ff88;
-            font-weight: normal;
-        }
-        
-        .header .title {
-            font-family: 'Consolas', 'Monaco', monospace;
-            font-size: 14px;
-            margin-bottom: 15px;
-            opacity: 0.9;
-            color: #00ff88;
+
+        .header-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 12px;
             font-weight: 500;
+            font-family: var(--font-body);
+            transition: color 0.2s;
+            text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-        
+
+        .header-nav a:hover {
+            color: var(--accent-terra-cotta);
+        }
+
+        .header-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header .role {
+            font-family: var(--font-body);
+            font-size: 14px;
+            color: var(--accent-terra-cotta);
+            font-weight: 600;
+            letter-spacing: -0.2px;
+        }
+
         .header .contact {
-            font-family: 'Consolas', 'Monaco', monospace;
-            font-size: 12px;
-            opacity: 0.95;
-            color: #a0a9c0;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--text-secondary);
+            display: flex;
+            gap: 16px;
         }
-        
-        .social-links {
-            margin-top: 10px;
-        }
-        
-        .social-links a {
-            color: white;
+
+        .header .contact a {
+            color: inherit;
             text-decoration: none;
-            margin: 0 8px;
-            opacity: 0.9;
+            transition: color 0.2s;
         }
-        
+
+        .header .contact a:hover {
+            color: var(--accent-terra-cotta);
+        }
+
+        .header .contact span {
+            display: flex;
+            align-items: center;
+        }
+
+        .header .contact span::after {
+            content: "•";
+            margin-left: 16px;
+            color: var(--border-color);
+        }
+
+        .header .contact span:last-child::after {
+            display: none;
+        }
+
+        /* SUMMARY */
+        .summary {
+            background: var(--bg-color);
+            padding: 24px 40px 10px 40px;
+            line-height: 1.6;
+            color: var(--text-primary);
+            font-family: var(--font-heading);
+            font-size: 13px;
+            font-style: italic;
+            opacity: 0.9;
+            max-width: 100%;
+        }
+
+        /* LAYOUT */
         .main-content {
             display: flex;
             min-height: calc(100vh - 200px);
         }
-        
+
         .left-column {
-            width: 35%;
-            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-            padding: 25px;
-            position: relative;
-            border-right: 3px solid #00ff88;
+            width: 32%;
+            background: var(--surface-color);
+            padding: 30px;
+            border-right: 1px solid var(--border-color);
         }
-        
-        .left-column::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px),
-                linear-gradient(180deg, rgba(0,255,136,0.03) 1px, transparent 1px);
-            background-size: 20px 20px;
-            pointer-events: none;
-        }
-        
+
         .right-column {
-            width: 65%;
-            padding: 25px 30px;
+            width: 68%;
+            padding: 30px 40px;
         }
-        
+
         .section {
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
-        
+
         .section h2 {
-            font-family: 'Consolas', 'Monaco', monospace;
+            font-family: var(--font-heading);
             font-size: 16px;
-            font-weight: 600;
-            color: #0f0f23;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-bottom: 2px solid #00ff88;
-            padding-bottom: 5px;
-            position: relative;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid var(--accent-sage);
+            display: inline-block;
         }
-        
-        .section h2::before {
-            content: "// ";
-            color: #00ff88;
-            font-weight: normal;
-        }
-        
-        .summary {
-            background: #f1f5f9;
-            padding: 20px;
-            border-left: 4px solid #00ff88;
-            margin-bottom: 0;
-            line-height: 1.6;
-        }
-        
+
+        /* JOBS */
         .job {
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #e2e8f0;
+            margin-bottom: 24px;
         }
-        
+
         .job:last-child {
-            border-bottom: none;
+            margin-bottom: 0;
         }
-        
+
         .job-header {
-            margin-bottom: 8px;
+            margin-bottom: 2px;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
         }
-        
+
         .company {
-            font-weight: 600;
-            color: #1e293b;
-            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 14px;
+            margin-right: 10px;
         }
-        
+
         .position {
-            color: #6B46C1;
-            font-weight: 500;
-            font-size: 12px;
+            color: var(--accent-terra-cotta);
+            font-weight: 600;
+            font-size: 13px;
+            margin-bottom: 6px;
         }
-        
+
         .duration {
-            color: #64748b;
+            color: var(--text-secondary);
             font-size: 11px;
-            float: right;
+            font-family: var(--font-mono);
+            white-space: nowrap;
         }
-        
+
         .job-description {
-            margin-top: 8px;
+            margin-top: 6px;
             line-height: 1.5;
+            color: var(--text-primary);
         }
-        
+
         .job ul {
             margin-top: 8px;
-            padding-left: 15px;
+            padding-left: 16px;
         }
-        
+
         .job li {
             margin-bottom: 4px;
-            font-size: 11px;
-            line-height: 1.4;
-        }
-        
-        .skills-category {
-            margin-bottom: 18px;
-        }
-        
-        .skills-category h3 {
-            font-family: 'Consolas', 'Monaco', monospace;
             font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .job li::marker {
+            color: var(--accent-terra-cotta);
+        }
+
+        /* SKILLS */
+        .skills-category {
+            margin-bottom: 20px;
+        }
+
+        .skills-category h3 {
+            font-family: var(--font-body);
+            font-size: 11px;
             font-weight: 600;
-            color: #0f0f23;
+            color: var(--text-secondary);
             margin-bottom: 8px;
-            border-bottom: 1px solid #00ff88;
-            padding-bottom: 3px;
-            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-        
-        .skills-category h3::before {
-            content: "{ ";
-            color: #00ff88;
-            font-weight: normal;
-        }
-        
-        .skills-category h3::after {
-            content: " }";
-            color: #00ff88;
-            font-weight: normal;
-        }
-        
+
         .skills-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 4px;
+            gap: 6px;
         }
-        
+
         .skill-tag {
-            background: #6B46C1;
-            color: white;
-            padding: 3px 8px;
-            border-radius: 12px;
-            font-size: 9px;
-            font-weight: 500;
-        }
-        
-        .ai-skill {
-            background: linear-gradient(45deg, #00ff88, #00cc6a);
-            color: #000;
-            font-weight: 600;
-            text-shadow: none;
-        }
-        
-        .cloud-skill {
-            background: #059669;
-        }
-        
-        .devops-skill {
-            background: #D97706;
-        }
-        
-        .education-item, .course-item {
-            margin-bottom: 12px;
-            font-size: 11px;
-            line-height: 1.4;
-        }
-        
-        .education-item strong, .course-item strong {
-            color: #1e293b;
-        }
-        
-        .languages {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        
-        .language {
-            background: #6B46C1;
-            color: white;
-            padding: 5px 12px;
-            border-radius: 15px;
+            background: white;
+            color: var(--text-secondary);
+            padding: 4px 10px;
+            border-radius: 6px;
             font-size: 10px;
             font-weight: 500;
+            border: 1px solid var(--border-color);
         }
-        
+
+        .ai-skill {
+            background: white;
+            color: var(--accent-terra-cotta);
+            border-color: var(--accent-terra-cotta);
+            font-weight: 600;
+        }
+
+        .cloud-skill, .devops-skill {
+            /* Consistent styling */
+        }
+
+        /* EDUCATION & CERTIFICATIONS */
+        .education-item, .course-item {
+            margin-bottom: 14px;
+            font-size: 11px;
+            line-height: 1.4;
+            color: var(--text-secondary);
+        }
+
+        .education-item strong, .course-item strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 2px;
+            font-size: 12px;
+        }
+
+        .languages {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .language {
+            background: white;
+            color: var(--text-primary);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+        }
+
         .clearfix::after {
             content: "";
             display: table;
@@ -335,26 +350,37 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Gilad Maoz</h1>
-            <div class="title">VP R&D / Engineering Manager | AI Product Development + Cloud Infrastructure</div>
-            <div class="contact">+36-20-498-9035 | gilad@maoz.dev | Budapest, HU</div>
-            <div class="social-links">
-                <a href="https://github.com/evilUrge">GitHub</a> |
-                <a href="https://www.linkedin.com/in/gilad-maoz/">LinkedIn</a> |
-                <a href="https://www.evilurge.com/">Portfolio</a> |
-                <a href="https://maoz.dev/">Dev Blog</a>
+            <div class="header-top">
+                <h1>Gilad Maoz</h1>
+                <div class="header-nav">
+                    <a href="https://maoz.dev/">maoz.dev</a>
+                    <a href="https://github.com/evilUrge">GitHub</a>
+                    <a href="https://www.linkedin.com/in/gilad-maoz/">LinkedIn</a>
+                    <a href="https://www.evilurge.com/">Portfolio</a>
+                </div>
+                </div>
+                
+                <div class="header-bottom">
+                    <div class="role">Senior DevOps / Engineering Manager</div>
+                    <div class="contact">
+                        <span><a href="mailto:gilad@maoz.dev">gilad@maoz.dev</a></span>
+                        <span><a href="tel:+36204989035">+36-20-498-9035</a></span>
+                        <span>Budapest, HU</span>
+                    </div>
             </div>
         </div>
 
         <div class="summary">
-            Engineering Manager with 15+ years leading development teams and architecting AI/LLM product solutions. Proven track record building scalable cloud infrastructure, managing cross-functional engineering teams, and delivering production-grade AI products. Combines deep technical expertise in DevOps, cloud architecture, and AI systems with strategic leadership to drive measurable business outcomes and cost optimization.
+            "Engineering Manager with 15+ years leading development teams and architecting AI/LLM product solutions. Proven track
+            record building scalable cloud infrastructure, managing cross-functional engineering teams, and delivering
+            production-grade AI products."
         </div>
 
         <div class="main-content">
             <div class="left-column">
                 <div class="section">
                     <h2>Skills</h2>
-                    
+
                     <div class="skills-category">
                         <h3>AI/ML & LLM</h3>
                         <div class="skills-list">
@@ -435,15 +461,15 @@
                 <div class="section">
                     <h2>Education</h2>
                     <div class="education-item">
-                        <strong>Advanced Python</strong><br>
+                        <strong>Advanced Python</strong>
                         John Bryce, 2015
                     </div>
                     <div class="education-item">
-                        <strong>Pre-academic Computer Science</strong><br>
+                        <strong>Pre-academic Computer Science</strong>
                         Hebrew University of Jerusalem, 2013
                     </div>
                     <div class="education-item">
-                        <strong>High School Diploma</strong><br>
+                        <strong>High School Diploma</strong>
                         Makif-Het High School, 2003-2006<br>
                         Major: Computer Science (5 units)
                     </div>
@@ -472,11 +498,11 @@
                     <h2>Experience</h2>
 
                     <div class="job">
-                        <div class="job-header clearfix">
+                        <div class="job-header">
                             <div class="company">Nyx.ai (Freelance Consulting)</div>
                             <div class="duration">March 2025–January 2026</div>
-                            <div class="position">VP R&D / Engineering Manager – AI Product Development</div>
                         </div>
+                        <div class="position">VP R&D / Engineering Manager – AI Product Development</div>
                         <div class="job-description">
                             Led engineering operations and AI product development for early-stage AI startup, managing team of 6 developers through agile development cycles and production deployments.
                             <ul>
@@ -490,11 +516,11 @@
                     </div>
 
                     <div class="job">
-                        <div class="job-header clearfix">
+                        <div class="job-header">
                             <div class="company">Verimatrix</div>
                             <div class="duration">June 2021–February 2024</div>
-                            <div class="position">Senior DevOps Engineer</div>
                         </div>
+                        <div class="position">Senior DevOps Engineer</div>
                         <div class="job-description">
                             Built and maintained cloud tools as part of the Cloud Tools & Automation team.
                             <ul>
@@ -507,11 +533,11 @@
                     </div>
 
                     <div class="job">
-                        <div class="job-header clearfix">
+                        <div class="job-header">
                             <div class="company">Yadati (Freelance Consulting)</div>
                             <div class="duration">June 2020–February 2021</div>
-                            <div class="position">Cloud & Software Architect</div>
                         </div>
+                        <div class="position">Cloud & Software Architect</div>
                         <div class="job-description">
                             Functioned as the company's software architect. Moved entire operation from Azure to Google's fully managed Firebase.
                             <ul>
@@ -524,11 +550,11 @@
                     </div>
 
                     <div class="job">
-                        <div class="job-header clearfix">
+                        <div class="job-header">
                             <div class="company">Finqle</div>
                             <div class="duration">October 2019–June 2020</div>
-                            <div class="position">Backend Developer</div>
                         </div>
+                        <div class="position">Backend Developer</div>
                         <div class="job-description">
                             <ul>
                                 <li>Worked on Django-based billing, accounting and factoring platform</li>
@@ -539,11 +565,11 @@
                     </div>
 
                     <div class="job">
-                        <div class="job-header clearfix">
+                        <div class="job-header">
                             <div class="company">vidaXL</div>
                             <div class="duration">February 2018–October 2019</div>
-                            <div class="position">Backend Developer & DevOps</div>
                         </div>
+                        <div class="position">Backend Developer & DevOps</div>
                         <div class="job-description">
                             <ul>
                                 <li>Implemented microservices using Firebase Functions, Cloudflare Workers, and Node.js</li>
@@ -555,11 +581,11 @@
                     </div>
 
                     <div class="job">
-                        <div class="job-header clearfix">
+                        <div class="job-header">
                             <div class="company">TimeToKnow (Freelance Consulting)</div>
                             <div class="duration">August 2016–February 2018</div>
-                            <div class="position">Backend Dev & DevOps</div>
                         </div>
+                        <div class="position">Backend Dev & DevOps</div>
                         <div class="job-description">
                             <ul>
                                 <li>Developed Django-based back-office for client content management</li>
@@ -571,11 +597,11 @@
                     </div>
 
                     <div class="job">
-                        <div class="job-header clearfix">
+                        <div class="job-header">
                             <div class="company">Tapingo</div>
                             <div class="duration">August 2015–August 2016</div>
-                            <div class="position">Automation Engineer & DevOps</div>
                         </div>
+                        <div class="position">Automation Engineer & DevOps</div>
                         <div class="job-description">
                             <ul>
                                 <li>Established test environment from scratch, started new automation infrastructure</li>
@@ -587,11 +613,11 @@
                     </div>
 
                     <div class="job">
-                        <div class="job-header clearfix">
+                        <div class="job-header">
                             <div class="company">ironSource installCore</div>
                             <div class="duration">June 2014–August 2015</div>
-                            <div class="position">QA & Automation</div>
                         </div>
+                        <div class="position">QA & Automation</div>
                         <div class="job-description">
                             <ul>
                                 <li>Built end-to-end automation tests with Python and Selenium</li>
