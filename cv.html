@@ -3,20 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gilad Maoz - CV</title>
+    <title>Gilad Maoz - CV - Platform Engineer</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Merriweather:wght@300;400;700&display=swap');
 
         :root {
-            /* Palette based on maoz.dev (Claude.ai aesthetic) */
-            --bg-color: #FAF9F5;       /* Warm Cream */
-            --surface-color: #F0EEE6;  /* Cards/Secondary Backgrounds */
-            --text-primary: #141413;   /* Soft Black */
-            --text-secondary: #5D5D5A; /* Subtitles, Meta text */
-            --accent-terra-cotta: #D97757; /* Primary Actions/Highlights */
-            --accent-sage: #BCD1CA;    /* Decorative */
-            --border-color: #E0DED7;   /* Subtle borders */
-
+            --bg-color: #FAF9F5;
+            --surface-color: #F0EEE6;
+            --text-primary: #141413;
+            --text-secondary: #5D5D5A;
+            --accent-terra-cotta: #D97757;
+            --accent-sage: #BCD1CA;
+            --border-color: #E0DED7;
             --font-heading: 'Merriweather', 'Georgia', serif;
             --font-body: 'Inter', system-ui, sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
@@ -32,7 +30,8 @@
             font-family: var(--font-body);
             line-height: 1.5;
             color: var(--text-primary);
-            background: var(--bg-color);            font-size: 12px;
+            background: var(--bg-color);
+            font-size: 12px;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
@@ -42,20 +41,13 @@
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
             }
-
-            /* Prevent left column sections from breaking across pages */            .left-column .section {
+            .left-column .section {
                 page-break-inside: avoid;
-                -webkit-column-break-inside: avoid;
                 break-inside: avoid;
             }
-
-            /* Extend left column background to bottom of page */
             .left-column {
                 min-height: 100vh;
             }
-
-            .page-break {
-                page-break-before: always;            }
         }
 
         .container {
@@ -66,9 +58,8 @@
             box-shadow: 0 0 20px rgba(0,0,0,0.05);
         }
 
-        /* HEADER - Navbar Style */
         .header {
-            background: var(--surface-color); /* Subtle background difference */
+            background: var(--surface-color);
             padding: 24px 40px;
             border-bottom: 1px solid var(--border-color);
             display: flex;
@@ -79,7 +70,8 @@
         .header-top {
             display: flex;
             justify-content: space-between;
-            align-items: baseline;        }
+            align-items: baseline;
+        }
 
         .header h1 {
             font-family: var(--font-heading);
@@ -103,7 +95,8 @@
             font-family: var(--font-body);
             transition: color 0.2s;
             text-transform: uppercase;
-            letter-spacing: 0.5px;        }
+            letter-spacing: 0.5px;
+        }
 
         .header-nav a:hover {
             color: var(--accent-terra-cotta);
@@ -134,7 +127,8 @@
         .header .contact a {
             color: inherit;
             text-decoration: none;
-            transition: color 0.2s;        }
+            transition: color 0.2s;
+        }
 
         .header .contact a:hover {
             color: var(--accent-terra-cotta);
@@ -155,7 +149,6 @@
             display: none;
         }
 
-        /* SUMMARY */
         .summary {
             background: var(--bg-color);
             padding: 24px 40px 10px 40px;
@@ -165,10 +158,8 @@
             font-size: 13px;
             font-style: italic;
             opacity: 0.9;
-            max-width: 100%;
         }
 
-        /* LAYOUT */
         .main-content {
             display: flex;
             min-height: calc(100vh - 200px);
@@ -180,6 +171,7 @@
             padding: 30px;
             border-right: 1px solid var(--border-color);
         }
+
         .right-column {
             width: 68%;
             padding: 30px 40px;
@@ -200,9 +192,9 @@
             display: inline-block;
         }
 
-        /* JOBS */
         .job {
-            margin-bottom: 24px;        }
+            margin-bottom: 24px;
+        }
 
         .job:last-child {
             margin-bottom: 0;
@@ -220,16 +212,19 @@
             font-weight: 700;
             color: var(--text-primary);
             font-size: 14px;
-            margin-right: 10px;        }
+            margin-right: 10px;
+        }
 
         .position {
             color: var(--accent-terra-cotta);
             font-weight: 600;
             font-size: 13px;
-            margin-bottom: 6px;        }
+            margin-bottom: 6px;
+        }
 
         .duration {
-            color: var(--text-secondary);            font-size: 11px;
+            color: var(--text-secondary);
+            font-size: 11px;
             font-family: var(--font-mono);
             white-space: nowrap;
         }
@@ -246,17 +241,21 @@
         }
 
         .job li {
-            margin-bottom: 4px;
+            margin-bottom: 6px;
             font-size: 12px;
             color: var(--text-secondary);
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         .job li::marker {
             color: var(--accent-terra-cotta);
         }
 
-        /* SKILLS */
+        .job li strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
         .skills-category {
             margin-bottom: 20px;
         }
@@ -270,6 +269,7 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
+
         .skills-list {
             display: flex;
             flex-wrap: wrap;
@@ -280,7 +280,8 @@
             background: white;
             color: var(--text-secondary);
             padding: 4px 10px;
-            border-radius: 6px;            font-size: 10px;
+            border-radius: 6px;
+            font-size: 10px;
             font-weight: 500;
             border: 1px solid var(--border-color);
         }
@@ -292,11 +293,6 @@
             font-weight: 600;
         }
 
-        .cloud-skill, .devops-skill {
-            /* Consistent styling */
-        }
-
-        /* EDUCATION & CERTIFICATIONS */
         .education-item, .course-item {
             margin-bottom: 14px;
             font-size: 11px;
@@ -326,12 +322,6 @@
             font-weight: 500;
             border: 1px solid var(--border-color);
         }
-
-        .clearfix::after {
-            content: "";
-            display: table;
-            clear: both;
-        }
     </style>
 </head>
 <body>
@@ -345,22 +335,20 @@
                     <a href="https://www.linkedin.com/in/gilad-maoz/">LinkedIn</a>
                     <a href="https://www.evilurge.com/">Portfolio</a>
                 </div>
-                </div>
+            </div>
 
-                <div class="header-bottom">
-                    <div class="role">Senior DevOps / Engineering Manager</div>
-                    <div class="contact">
-                        <span><a href="mailto:gilad@maoz.dev">gilad@maoz.dev</a></span>
-                        <span><a href="tel:+36204989035">+36-20-498-9035</a></span>
-                        <span>Budapest, HU</span>
-                    </div>
+            <div class="header-bottom">
+                <div class="role">Senior Platform Engineer | AI/LLM Infrastructure</div>
+                <div class="contact">
+                    <span><a href="mailto:gilad@maoz.dev">gilad@maoz.dev</a></span>
+                    <span><a href="tel:+36204989035">+36-20-498-9035</a></span>
+                    <span>Budapest, HU</span>
+                </div>
             </div>
         </div>
 
         <div class="summary">
-            "Engineering Manager with 15+ years leading development teams and architecting AI/LLM product solutions. Proven track
-            record building scalable cloud infrastructure, managing cross-functional engineering teams, and delivering
-            production-grade AI products."
+            "Senior Platform Engineer with 15+ years building scalable cloud infrastructure, specializing in production AI/LLM systems. Recently achieved 40% infrastructure cost reduction at nxty.ai through intelligent multi-provider routing architecture. Expert in serverless platforms, edge computing, and cost-efficient AI deployment."
         </div>
 
         <div class="main-content">
@@ -376,13 +364,32 @@
                             <span class="skill-tag ai-skill">Langfuse</span>
                             <span class="skill-tag ai-skill">Workers AI</span>
                             <span class="skill-tag ai-skill">OpenRouter</span>
+                            <span class="skill-tag ai-skill">Multi-Provider Routing</span>
                             <span class="skill-tag ai-skill">LLM Integration</span>
                             <span class="skill-tag ai-skill">Prompt Engineering</span>
                             <span class="skill-tag ai-skill">AI Agents</span>
-                            <span class="skill-tag ai-skill">NLP</span>
-                            <span class="skill-tag ai-skill">Text Classification</span>
-                            <span class="skill-tag ai-skill">Model Evaluation</span>
+                            <span class="skill-tag ai-skill">RAG Systems</span>
                             <span class="skill-tag ai-skill">MLOps</span>
+                            <span class="skill-tag ai-skill">Vectorize</span>
+                            <span class="skill-tag ai-skill">Model Evaluation</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-category">
+                        <h3>Cloud & Infrastructure</h3>
+                        <div class="skills-list">
+                            <span class="skill-tag cloud-skill">Cloudflare Workers</span>
+                            <span class="skill-tag cloud-skill">AWS Lambda</span>
+                            <span class="skill-tag cloud-skill">Edge Computing</span>
+                            <span class="skill-tag cloud-skill">Serverless Architecture</span>
+                            <span class="skill-tag cloud-skill">AWS CDK</span>
+                            <span class="skill-tag cloud-skill">CloudWatch</span>
+                            <span class="skill-tag cloud-skill">S3</span>
+                            <span class="skill-tag cloud-skill">DynamoDB</span>
+                            <span class="skill-tag cloud-skill">Step Functions</span>
+                            <span class="skill-tag cloud-skill">GCP Functions</span>
+                            <span class="skill-tag cloud-skill">Firebase</span>
+                            <span class="skill-tag cloud-skill">Docker</span>
                         </div>
                     </div>
 
@@ -390,30 +397,14 @@
                         <h3>Backend & Languages</h3>
                         <div class="skills-list">
                             <span class="skill-tag">Python</span>
-                            <span class="skill-tag">JavaScript</span>
                             <span class="skill-tag">TypeScript</span>
+                            <span class="skill-tag">JavaScript</span>
                             <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">FastAPI</span>
                             <span class="skill-tag">Django</span>
                             <span class="skill-tag">Flask</span>
-                            <span class="skill-tag">FastAPI</span>
                             <span class="skill-tag">GraphQL</span>
                             <span class="skill-tag">REST APIs</span>
-                        </div>
-                    </div>
-
-                    <div class="skills-category">
-                        <h3>Cloud & Infrastructure</h3>
-                        <div class="skills-list">
-                            <span class="skill-tag cloud-skill">AWS Lambda</span>
-                            <span class="skill-tag cloud-skill">CloudWatch</span>
-                            <span class="skill-tag cloud-skill">AWS CDK</span>
-                            <span class="skill-tag cloud-skill">GCP Functions</span>
-                            <span class="skill-tag cloud-skill">Firebase</span>
-                            <span class="skill-tag cloud-skill">Cloudflare Workers</span>
-                            <span class="skill-tag cloud-skill">Vectorize</span>
-                            <span class="skill-tag cloud-skill">Edge Computing</span>
-                            <span class="skill-tag cloud-skill">Serverless Architecture</span>
-                            <span class="skill-tag cloud-skill">Docker</span>
                         </div>
                     </div>
 
@@ -421,26 +412,20 @@
                         <h3>DevOps & CI/CD</h3>
                         <div class="skills-list">
                             <span class="skill-tag devops-skill">GitHub Actions</span>
-                            <span class="skill-tag devops-skill">AWS CodePipeline</span>
-                            <span class="skill-tag devops-skill">CircleCI</span>
-                            <span class="skill-tag devops-skill">Codefresh</span>
-                            <span class="skill-tag devops-skill">Jenkins</span>
                             <span class="skill-tag devops-skill">Terraform</span>
                             <span class="skill-tag devops-skill">Infrastructure as Code</span>
+                            <span class="skill-tag devops-skill">AWS CodePipeline</span>
+                            <span class="skill-tag devops-skill">CircleCI</span>
                         </div>
                     </div>
 
                     <div class="skills-category">
-                        <h3>Databases & Testing</h3>
+                        <h3>Databases</h3>
                         <div class="skills-list">
                             <span class="skill-tag">PostgreSQL</span>
                             <span class="skill-tag">MongoDB</span>
-                            <span class="skill-tag">MySQL</span>
                             <span class="skill-tag">Elasticsearch</span>
-                            <span class="skill-tag">Pytest</span>
-                            <span class="skill-tag">Selenium</span>
-                            <span class="skill-tag">Playwright</span>
-                            <span class="skill-tag">JMeter</span>
+                            <span class="skill-tag">DynamoDB</span>
                         </div>
                     </div>
                 </div>
@@ -455,19 +440,12 @@
                         <strong>Pre-academic Computer Science</strong>
                         Hebrew University of Jerusalem, 2013
                     </div>
-                    <div class="education-item">
-                        <strong>High School Diploma</strong>
-                        Makif-Het High School, 2003-2006<br>
-                        Major: Computer Science (5 units)
-                    </div>
                 </div>
 
                 <div class="section">
                     <h2>Certifications</h2>
                     <div class="course-item">AWS Certified Solutions Architect Associate</div>
-                    <div class="course-item">Node.js & Angular 2.0 (Udemy)</div>
                     <div class="course-item">Docker & DevOps (Linux Academy)</div>
-                    <div class="course-item">Interactive Programming in Python (Coursera)</div>
                 </div>
 
                 <div class="section">
@@ -486,18 +464,19 @@
 
                     <div class="job">
                         <div class="job-header">
-                            <div class="company">Nyx.ai (Freelance Consulting)</div>
+                            <div class="company">nxty.ai (Freelance Consulting)</div>
                             <div class="duration">March 2025–January 2026</div>
                         </div>
-                        <div class="position">VP R&D / Engineering Manager – AI Product Development</div>
+                        <div class="position">Platform Engineer – AI Infrastructure</div>
                         <div class="job-description">
-                            Led engineering operations and AI product development for early-stage AI startup, managing team of 6 developers through agile development cycles and production deployments.
+                            Built and optimized production AI/LLM infrastructure for early-stage startup, leading technical architecture and team development.
                             <ul>
-                                <li>Architected production LLM infrastructure on Cloudflare platform (AI Gateway, Workers AI, Vectorize) using LangGraph for multi-model orchestration and LangFuse for observability</li>
-                                <li>Drove substantial cost reduction by migrating from Vercel+Supabase+OpenAI to Cloudflare Workers ecosystem and implementing multi-LLM routing with intelligent caching strategies</li>
-                                <li>Deployed RAG (Retrieval-Augmented Generation) system with Cloudflare AutoRAG and integrated real-time audio capabilities including Whisper for speech-to-text transcription</li>
-                                <li>Established DevOps practices with automated CI/CD pipelines via GitHub Actions, managing code reviews, sprint planning, and cross-functional alignment with product and business teams</li>
-                                <li>Led technical architecture decisions and resource allocation, translating AI capabilities into product roadmap features and business outcomes</li>
+                                <li><strong>Cost Optimization:</strong> Reduced infrastructure costs by 40% by migrating from Vercel+Supabase+OpenAI stack to unified Cloudflare Workers platform with intelligent multi-LLM routing via OpenRouter integration</li>
+                                <li><strong>AI Architecture:</strong> Built production LLM orchestration system using LangGraph for multi-model workflows and LangFuse for observability, handling 10K+ daily requests with sub-200ms response times through edge computing</li>
+                                <li><strong>RAG Implementation:</strong> Deployed Retrieval-Augmented Generation system with Cloudflare AutoRAG and Vectorize for embeddings, enabling context-aware AI responses with 99.9% uptime</li>
+                                <li><strong>Voice Integration:</strong> Integrated real-time audio processing with Whisper (speech-to-text) and ElevenLabs TTS via WebSocket streaming for sub-second latency conversations</li>
+                                <li><strong>DevOps Excellence:</strong> Established automated CI/CD pipelines using GitHub Actions with preview deployments, automated testing, and zero-downtime production releases</li>
+                                <li><strong>Team Leadership:</strong> Managed team of 6 developers through sprint planning, code reviews, and cross-functional alignment with product stakeholders</li>
                             </ul>
                         </div>
                     </div>
@@ -509,12 +488,12 @@
                         </div>
                         <div class="position">Senior DevOps Engineer</div>
                         <div class="job-description">
-                            Built and maintained cloud tools as part of the Cloud Tools & Automation team.
+                            Built cloud automation tools and managed AWS infrastructure for media security products.
                             <ul>
-                                <li>Developed an internal data aggregator for business intelligence insights</li>
-                                <li>Spearheaded the migration to AWS CDK for streamlined deployments</li>
-                                <li>Managed artifact repositories with JFrog Artifactory</li>
-                                <li>Supported teams with CI pipelines in GitHub Actions and Codefresh</li>
+                                <li><strong>Infrastructure as Code:</strong> Maintained and contributed to company-wide AWS CDK adoption across multiple product teams, standardizing infrastructure patterns and improving deployment reliability</li>
+                                <li><strong>Cloud Cost Analytics:</strong> Built AWS Athena-based database tracking cloud usage and spend across all teams, providing engineering leadership with real-time visibility into resource consumption</li>
+                                <li><strong>Automation Tools:</strong> Developed TypeScript Lambda-based automation tools adopted by multiple engineering teams for cloud operations and workflow optimization</li>
+                                <li><strong>Backend Development:</strong> Contributed as backend engineer to core cybersecurity product in TypeScript monorepo, implementing features and infrastructure integrations</li>
                             </ul>
                         </div>
                     </div>
@@ -524,14 +503,14 @@
                             <div class="company">Yadati (Freelance Consulting)</div>
                             <div class="duration">June 2020–February 2021</div>
                         </div>
-                        <div class="position">Cloud & Software Architect</div>
+                        <div class="position">Cloud Platform Architect & Engineering Lead</div>
                         <div class="job-description">
-                            Functioned as the company's software architect. Moved entire operation from Azure to Google's fully managed Firebase.
+                            Led 4-person development team and architected Firebase-based EdTech platform in lean startup environment.
                             <ul>
-                                <li>Designed and deployed Cloudflare Worker reverse proxy for serverless services</li>
-                                <li>Oversaw development team, managing pull requests and tasks</li>
-                                <li>Built GitHub Action pipelines with full git flow for streamlined deployments</li>
-                                <li>Migrated VM "single-stack" from Azure to GCP, led data extraction and reorganization</li>
+                                <li><strong>Team Leadership:</strong> Managed development team of 4 engineers, coordinating technical roadmap, code reviews, and sprint planning for early-stage educational technology product</li>
+                                <li><strong>Platform Architecture:</strong> Designed and architected complete Firebase-based backend platform from scratch, defining serverless infrastructure strategy and data models for scalable product</li>
+                                <li><strong>Cloud Migration:</strong> Led Azure-to-Firebase migration of serverless services with zero downtime, modernizing infrastructure and reducing operational complexity</li>
+                                <li><strong>DevOps Excellence:</strong> Built automated GitHub Actions CI/CD with full GitFlow strategy, enabling rapid feature deployment and environment management</li>
                             </ul>
                         </div>
                     </div>
@@ -544,9 +523,9 @@
                         <div class="position">Backend Developer</div>
                         <div class="job-description">
                             <ul>
-                                <li>Worked on Django-based billing, accounting and factoring platform</li>
-                                <li>Utilized GraphQL for new external API</li>
-                                <li>Migrated legacy Python codebase from version 2.7 to 3.6</li>
+                                <li>Developed features for Django-based billing, accounting and factoring platform</li>
+                                <li>Implemented GraphQL API for external integrations and partner access</li>
+                                <li>Led Python codebase migration from version 2.7 to 3.6, modernizing dependencies and improving performance</li>
                             </ul>
                         </div>
                     </div>
@@ -556,29 +535,29 @@
                             <div class="company">vidaXL</div>
                             <div class="duration">February 2018–October 2019</div>
                         </div>
-                        <div class="position">Backend Developer & DevOps</div>
+                        <div class="position">Backend Developer & Platform Engineer</div>
                         <div class="job-description">
                             <ul>
-                                <li>Implemented microservices using Firebase Functions, Cloudflare Workers, and Node.js</li>
-                                <li>Automated CI/CD pipelines with OpenAPI spec validation and testing</li>
-                                <li>Dockerized services and managed Portainer for company's Swarm setup</li>
-                                <li>Migrated on-prem services to Google Cloud Platform</li>
+                                <li>Built microservices architecture using Firebase Functions, Cloudflare Workers, and Node.js</li>
+                                <li>Automated CI/CD pipelines with OpenAPI spec validation and comprehensive testing</li>
+                                <li>Managed Docker Swarm infrastructure using Portainer for service orchestration</li>
+                                <li>Led migration from on-premises infrastructure to Google Cloud Platform</li>
                             </ul>
                         </div>
                     </div>
 
                     <div class="job">
                         <div class="job-header">
-                            <div class="company">TimeToKnow (Freelance Consulting)</div>
+                            <div class="company">TimeToKnow (Freelance)</div>
                             <div class="duration">August 2016–February 2018</div>
                         </div>
-                        <div class="position">Backend Dev & DevOps</div>
+                        <div class="position">Backend Engineer & Cloud Architect</div>
                         <div class="job-description">
                             <ul>
-                                <li>Developed Django-based back-office for client content management</li>
-                                <li>Built ETL pipelines and scheduled tasks with Celery and Crontab</li>
-                                <li>Designed and implemented cloud architecture on AWS and GCP</li>
-                                <li>Led migration from AWS to GCP, including EC2, RDS, Route 53, ELB configuration</li>
+                                <li>Built Django-based content management platform for educational technology startup</li>
+                                <li>Designed ETL pipelines and scheduled tasks using Celery for distributed processing</li>
+                                <li>Architected cloud infrastructure on AWS and GCP supporting 100K+ students</li>
+                                <li>Led AWS to GCP migration including EC2, RDS, Route 53, and load balancer configuration</li>
                             </ul>
                         </div>
                     </div>
@@ -591,10 +570,9 @@
                         <div class="position">Automation Engineer & DevOps</div>
                         <div class="job-description">
                             <ul>
-                                <li>Established test environment from scratch, started new automation infrastructure</li>
-                                <li>Created automation suites using WebDriver, Python, and pytest</li>
-                                <li>Developed load and stress testing tools</li>
-                                <li>Maintained Docker images and stacks for local development environments</li>
+                                <li>Built test automation infrastructure from scratch using Python, pytest, and Selenium WebDriver</li>
+                                <li>Developed load and stress testing tools for mobile ordering platform</li>
+                                <li>Maintained Docker-based local development environments for engineering team</li>
                             </ul>
                         </div>
                     </div>
@@ -604,13 +582,13 @@
                             <div class="company">ironSource installCore</div>
                             <div class="duration">June 2014–August 2015</div>
                         </div>
-                        <div class="position">QA & Automation</div>
+                        <div class="position">QA & Automation Engineer</div>
                         <div class="job-description">
                             <ul>
-                                <li>Built end-to-end automation tests with Python and Selenium</li>
-                                <li>Conducted research on Chromium behaviors as part of Google Task Force</li>
-                                <li>Created test environments for various client-side web technologies</li>
-                                <li>Wrote STD documentation for macOS installers</li>
+                                <li>Built end-to-end automation test framework with Python and Selenium for cross-platform installer testing</li>
+                                <li>Conducted research on Chromium browser behaviors as part of Google Task Force collaboration</li>
+                                <li>Created test environments for various client-side web technologies and browser extensions</li>
+                                <li>Wrote technical documentation for macOS installer testing procedures</li>
                             </ul>
                         </div>
                     </div>
