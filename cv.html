@@ -36,6 +36,11 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
         @media print {
             body {
                 -webkit-print-color-adjust: exact !important;
@@ -47,6 +52,10 @@
             }
             .left-column {
                 min-height: 100vh;
+            }
+            .job {
+                page-break-inside: avoid;
+                break-inside: avoid;
             }
         }
 
@@ -147,6 +156,24 @@
 
         .header .contact span:last-child::after {
             display: none;
+        }
+
+        .eligibility {
+            font-family: var(--font-body);
+            font-size: 10px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            letter-spacing: 0.2px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .eligibility span:not(:last-child)::after {
+            content: "·";
+            margin-left: 8px;
+            color: var(--border-color);
         }
 
         .summary {
@@ -322,6 +349,46 @@
             font-weight: 500;
             border: 1px solid var(--border-color);
         }
+
+        .oss-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .oss-item {
+            font-size: 11px;
+            line-height: 1.4;
+            color: var(--text-secondary);
+        }
+
+        .oss-item strong {
+            color: var(--text-primary);
+            font-weight: 600;
+            display: block;
+            font-size: 11px;
+            margin-bottom: 1px;
+        }
+
+        .oss-item a {
+            color: var(--accent-terra-cotta);
+            text-decoration: none;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            word-break: break-all;
+        }
+
+        .oss-item a:hover {
+            text-decoration: underline;
+        }
+
+        .oss-item .oss-note {
+            display: block;
+            font-size: 10px;
+            color: var(--text-secondary);
+            margin-top: 2px;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -341,14 +408,21 @@
                 <div class="role">Senior Platform Engineer | AI/LLM Infrastructure</div>
                 <div class="contact">
                     <span><a href="mailto:gilad@maoz.dev">gilad@maoz.dev</a></span>
-                    <span><a href="tel:+36204989035">+36-20-498-9035</a></span>
+                    <span><a href="tel:+362****9035">+36-20-498-9035</a></span>
                     <span>Budapest, HU</span>
                 </div>
+            </div>
+
+            <div class="eligibility">
+                <span>EU citizen (Dutch passport)</span>
+                <span>GMT+1 (Budapest)</span>
+                <span>Remote-first EU</span>
+                <span>No sponsorship required</span>
             </div>
         </div>
 
         <div class="summary">
-            "Senior Platform Engineer with 15+ years building scalable cloud infrastructure, specializing in production AI/LLM systems. Recently achieved 40% infrastructure cost reduction at nxty.ai through intelligent multi-provider routing architecture. Expert in serverless platforms, edge computing, and cost-efficient AI deployment."
+            "Senior Platform Engineer with 15+ years building scalable cloud infrastructure, specializing in production AI/LLM systems. Most recently owned the AI platform at nxty.ai, migrating it to Cloudflare Workers with multi-provider LLM routing. Experienced in serverless platforms, edge computing, and cost-efficient AI deployment."
         </div>
 
         <div class="main-content">
@@ -372,6 +446,8 @@
                             <span class="skill-tag ai-skill">MLOps</span>
                             <span class="skill-tag ai-skill">Vectorize</span>
                             <span class="skill-tag ai-skill">Model Evaluation</span>
+                            <span class="skill-tag ai-skill">Whisper (STT)</span>
+                            <span class="skill-tag ai-skill">ElevenLabs (TTS)</span>
                         </div>
                     </div>
 
@@ -380,6 +456,7 @@
                         <div class="skills-list">
                             <span class="skill-tag cloud-skill">Cloudflare Workers</span>
                             <span class="skill-tag cloud-skill">AWS Lambda</span>
+                            <span class="skill-tag cloud-skill">AWS EC2</span>
                             <span class="skill-tag cloud-skill">Edge Computing</span>
                             <span class="skill-tag cloud-skill">Serverless Architecture</span>
                             <span class="skill-tag cloud-skill">AWS CDK</span>
@@ -431,6 +508,36 @@
                 </div>
 
                 <div class="section">
+                    <h2>Open Source &amp; Public Work</h2>
+                    <div class="oss-list">
+                        <div class="oss-item">
+                            <strong>thriv.es</strong>
+                            <span class="oss-note">Co-founder &amp; CTO (2024–present). AI product studio. Six open-source production AI products at github.com/thriv-es. Self-funded.</span>
+                        </div>
+                        <div class="oss-item">
+                            <strong>github.com/thriv-es</strong>
+                            <a href="https://github.com/thriv-es">github.com/thriv-es</a>
+                            <span class="oss-note">Movers, Transcriber, Slides-Maker, Prompt-Builder, Domain-Knowledge, Cloudflare-Auth</span>
+                        </div>
+                        <div class="oss-item">
+                            <strong>evilurge.com</strong>
+                            <a href="https://www.evilurge.com">evilurge.com</a>
+                            <span class="oss-note">12+ technical posts on AI/LLM, Cloudflare Workers, DevOps</span>
+                        </div>
+                        <div class="oss-item">
+                            <strong>HansCard</strong>
+                            <a href="https://card.evilurge.com">card.evilurge.com</a>
+                            <span class="oss-note">Language-learning SaaS (GPT-4 + Claude tutoring, Supabase)</span>
+                        </div>
+                        <div class="oss-item">
+                            <strong>maoz.dev</strong>
+                            <a href="https://maoz.dev">maoz.dev</a>
+                            <span class="oss-note">Portfolio &amp; consulting engagements</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
                     <h2>Education</h2>
                     <div class="education-item">
                         <strong>Advanced Python</strong>
@@ -445,7 +552,7 @@
                 <div class="section">
                     <h2>Certifications</h2>
                     <div class="course-item">AWS Certified Solutions Architect Associate</div>
-                    <div class="course-item">Docker & DevOps (Linux Academy)</div>
+                    <div class="course-item">Docker &amp; DevOps (Linux Academy)</div>
                 </div>
 
                 <div class="section">
@@ -469,14 +576,14 @@
                         </div>
                         <div class="position">Platform Engineer – AI Infrastructure</div>
                         <div class="job-description">
-                            Built and optimized production AI/LLM infrastructure for early-stage startup, leading technical architecture and team development.
+                            Built, optimized, and deployed production AI/LLM infrastructure for early-stage startup, leading technical architecture and team development.
                             <ul>
-                                <li><strong>Cost Optimization:</strong> Reduced infrastructure costs by 40% by migrating from Vercel+Supabase+OpenAI stack to unified Cloudflare Workers platform with intelligent multi-LLM routing via OpenRouter integration</li>
-                                <li><strong>AI Architecture:</strong> Built production LLM orchestration system using LangGraph for multi-model workflows and LangFuse for observability, handling 10K+ daily requests with sub-200ms response times through edge computing</li>
-                                <li><strong>RAG Implementation:</strong> Deployed Retrieval-Augmented Generation system with Cloudflare AutoRAG and Vectorize for embeddings, enabling context-aware AI responses with 99.9% uptime</li>
-                                <li><strong>Voice Integration:</strong> Integrated real-time audio processing with Whisper (speech-to-text) and ElevenLabs TTS via WebSocket streaming for sub-second latency conversations</li>
-                                <li><strong>DevOps Excellence:</strong> Established automated CI/CD pipelines using GitHub Actions with preview deployments, automated testing, and zero-downtime production releases</li>
-                                <li><strong>Team Leadership:</strong> Managed team of 6 developers through sprint planning, code reviews, and cross-functional alignment with product stakeholders</li>
+                                <li><strong>Infrastructure Ownership:</strong> Owned the company's platform end to end, migrating from a Vercel + Supabase + OpenAI stack to Cloudflare Workers with multi-model LLM routing through OpenRouter</li>
+                                <li><strong>AI Architecture:</strong> Built the production LLM orchestration layer using LangGraph for multi-model workflows and LangFuse for tracing and observability, running on Cloudflare's edge runtime</li>
+                                <li><strong>RAG:</strong> Added retrieval-augmented generation with Cloudflare AutoRAG and Vectorize for embeddings, grounding model responses in the company's own content</li>
+                                <li><strong>Voice Integration:</strong> Integrated real-time voice using Whisper for speech-to-text and ElevenLabs for TTS over WebSocket streaming</li>
+                                <li><strong>Operations:</strong> Acted as the company's sole platform and DevOps engineer, running GitHub Actions CI/CD with per-PR preview deployments and day-to-day production operations</li>
+                                <li><strong>Technical Leadership:</strong> Tech lead for a team of 6 developers, coordinating sprint planning, code reviews, and alignment with product stakeholders</li>
                             </ul>
                         </div>
                     </div>
@@ -503,13 +610,13 @@
                             <div class="company">Yadati (Freelance Consulting)</div>
                             <div class="duration">June 2020–February 2021</div>
                         </div>
-                        <div class="position">Cloud Platform Architect & Engineering Lead</div>
+                        <div class="position">Cloud Platform Architect &amp; Engineering Lead</div>
                         <div class="job-description">
                             Led 4-person development team and architected Firebase-based EdTech platform in lean startup environment.
                             <ul>
                                 <li><strong>Team Leadership:</strong> Managed development team of 4 engineers, coordinating technical roadmap, code reviews, and sprint planning for early-stage educational technology product</li>
                                 <li><strong>Platform Architecture:</strong> Designed and architected complete Firebase-based backend platform from scratch, defining serverless infrastructure strategy and data models for scalable product</li>
-                                <li><strong>Cloud Migration:</strong> Led Azure-to-Firebase migration of serverless services with zero downtime, modernizing infrastructure and reducing operational complexity</li>
+                                <li><strong>Cloud Migration:</strong> Led Azure-to-Firebase migration of serverless services, modernizing infrastructure and reducing operational complexity</li>
                                 <li><strong>DevOps Excellence:</strong> Built automated GitHub Actions CI/CD with full GitFlow strategy, enabling rapid feature deployment and environment management</li>
                             </ul>
                         </div>
@@ -535,7 +642,7 @@
                             <div class="company">vidaXL</div>
                             <div class="duration">February 2018–October 2019</div>
                         </div>
-                        <div class="position">Backend Developer & Platform Engineer</div>
+                        <div class="position">Backend Developer &amp; Platform Engineer</div>
                         <div class="job-description">
                             <ul>
                                 <li>Built microservices architecture using Firebase Functions, Cloudflare Workers, and Node.js</li>
@@ -551,12 +658,12 @@
                             <div class="company">TimeToKnow (Freelance)</div>
                             <div class="duration">August 2016–February 2018</div>
                         </div>
-                        <div class="position">Backend Engineer & Cloud Architect</div>
+                        <div class="position">Backend Engineer &amp; Cloud Architect</div>
                         <div class="job-description">
                             <ul>
                                 <li>Built Django-based content management platform for educational technology startup</li>
                                 <li>Designed ETL pipelines and scheduled tasks using Celery for distributed processing</li>
-                                <li>Architected cloud infrastructure on AWS and GCP supporting 100K+ students</li>
+                                <li><strong>Cloud Architecture:</strong> Architected cloud infrastructure on AWS and GCP supporting 100K+ students</li>
                                 <li>Led AWS to GCP migration including EC2, RDS, Route 53, and load balancer configuration</li>
                             </ul>
                         </div>
@@ -567,7 +674,7 @@
                             <div class="company">Tapingo</div>
                             <div class="duration">August 2015–August 2016</div>
                         </div>
-                        <div class="position">Automation Engineer & DevOps</div>
+                        <div class="position">Automation Engineer &amp; DevOps</div>
                         <div class="job-description">
                             <ul>
                                 <li>Built test automation infrastructure from scratch using Python, pytest, and Selenium WebDriver</li>
@@ -582,7 +689,7 @@
                             <div class="company">ironSource installCore</div>
                             <div class="duration">June 2014–August 2015</div>
                         </div>
-                        <div class="position">QA & Automation Engineer</div>
+                        <div class="position">QA &amp; Automation Engineer</div>
                         <div class="job-description">
                             <ul>
                                 <li>Built end-to-end automation test framework with Python and Selenium for cross-platform installer testing</li>

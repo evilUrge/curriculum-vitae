@@ -249,11 +249,18 @@ class ATSValidator {
     const text = this.extractText(this.html);
 
     // Look for numbers, percentages, metrics
-    const percentages = (text.match(/\d+%/g) || []).length;
+    const percentages = (text.match(/\d+(\.\d+)?%/g) || []).length;
     const numbers = (text.match(/\d+[KM]?\+/g) || []).length;
     const metrics = (text.match(/\d+x|sub-\d+ms|<\d+ms|\d+ms/g) || []).length;
+    // Noun-counted facts: real, verifiable counts of people, users, products.
+    // Rewards honest specifics over fabricated "X% improvement" claims.
+    const nounCounts = (
+      text.match(
+        /\d+\s+(engineers?|students?|developers?|products?|repos?|years?|requests?|customers?|countries?|sprints?)\b/gi,
+      ) || []
+    ).length;
 
-    const total = percentages + numbers + metrics;
+    const total = percentages + numbers + metrics + nounCounts;
 
     if (total >= 10) {
       this.feedback.push(`✅ ${total} quantified achievements (excellent)`);
@@ -385,7 +392,7 @@ class ATSValidator {
       }
 
       // Has quantified result
-      if (/\d+%|\d+x|\d+K\+/.test(bulletText)) {
+      if (/\d+(\.\d+)?%|\d+(\.\d+)?x|\d+K\+|\d+\s+(engineers?|students?|developers?|products?|repos?|years?|requests?|customers?|countries?|sprints?)\b/i.test(bulletText)) {
         bulletScore += 1;
       }
 
